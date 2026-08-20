@@ -9,6 +9,12 @@ A data pipeline that queries live Compound V2 lending data per wallet address vi
 - Computes `score = 0.3 * normalized_borrow + 0.4 * normalized_utilization + 0.3 * normalized_interest`, scaled to 0-1000.
 - Exports the scored wallets to `wallet_risk_scores.csv`.
 
+## Demo
+
+`demo_formula.py` illustrates the real scoring formula on small synthetic wallet numbers — **not live data**, since the real API is dead (see below). Labeled as synthetic on-screen, not presented as a live run:
+
+![Terminal recording of the formula on synthetic data](docs/demo.gif)
+
 ## Honest scope — no evaluation metric, and here's why
 
 This is a hand-weighted heuristic formula, not a trained or validated model. There is no ground truth for "wallet risk" here (no labeled set of wallets that actually defaulted or didn't), so there is nothing to measure precision/recall/accuracy against, and no evaluation metric is reported because none can be honestly computed. The 0.3/0.4/0.3 weighting is a reasonable-looking guess, not a fitted or backtested parameter.
